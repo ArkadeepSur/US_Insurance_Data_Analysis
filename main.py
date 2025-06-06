@@ -54,6 +54,9 @@ for bmi_ind in bmis:
 total_avg_bmi = total_bmi/len(bmis)
 print(f"The average BMI of the dataset is {round(total_avg_bmi,2)}")
 
+## Age Classification
+print(f"\nThe maximum age in the dataset is {max(ages)}")
+print(f"The minimum age in the dataset is {min(ages)}")
 ## Average Age
 total_age = 0.0
 for age_ind in ages:
@@ -61,11 +64,24 @@ for age_ind in ages:
 total_avg_age = total_age/len(ages)
 print(f"The average Age of the dataset is {round(total_avg_age,2)} years old")
 
+#Number of Male and Female participants and their ratio 
+count_male = 0
+count_female = 0
+for item in sex:
+    if item == 'male':
+        count_male += 1
+    elif item == 'female':
+        count_female += 1
+print(f"\nThere are {count_male} male participants and {count_female} female participants")
+print(f"The ratio betwwen male and female participants is:{count_male/count_female} ")
+
+
+
 ##Relation between smoker and non-smoker w.r.t to Insurance Cost for one person
 element = smoker.index('yes')
 new_insurance_cost = calc_insurance_cost(int(ages[element]), sex[element]=='Male',\
                                           bmis[element], int(children[element]), 0)
-#print(f"The change in insurance cost if you do not smoke, for one person is \
+#print(f"\nThe change in insurance cost if you do not smoke, for one person is \
 # ${round(new_insurance_cost - float(charges[element]),2)}")
 
 ## Relation between smoker and non-smoker for all smokers involved
@@ -86,8 +102,8 @@ for index in indices_smoker:
     j += 1
 avg_change_in_dollars = sum(change_in_dollars)/len(change_in_dollars)
 avg_change_in_perc = sum(change_perc)/len(change_perc)
-print(f"Average change in cost if people stopped smoking is ${round(avg_change_in_dollars,2)}")
-print(f"Average change in cost % if stopped smoking is {round(avg_change_in_perc, 2)}%")
+print(f"\nAverage change in cost if people stopped smoking is ${round(avg_change_in_dollars,2)}")
+print(f"Average change in cost % if people stopped smoking is {round(avg_change_in_perc, 2)}%\n")
 
 
 
@@ -98,7 +114,7 @@ def calc_insurance_total_region(region_chk):
     indices_region = [i for i, val in enumerate(regions) if val == region_chk]
     for index in indices_region:
             insurance_total_region += float(charges[index])
-    print(f"The number of perople from {region_chk} are {len(indices_region)}")
+    print(f"There are {len(indices_region)} number of people from {region_chk}")
     return insurance_total_region/len(indices_region)
 
 for region in list(set(regions)):
@@ -107,7 +123,7 @@ for region in list(set(regions)):
 for key, value in region_insurance_cost.items():
     if value == max(region_insurance_cost.values()):
         print(f"The maximum average insurance cost is seen in {key} region \
-with a value of ${round(value,2)}")
+with a value of ${round(value,2)}\n")
 
 #Average cost of insurance based on no_of_children
 children_avg_insurance_cost = {}
@@ -121,7 +137,7 @@ list1 = list(set(children))
 list1.sort()
 for num in list1:
     children_avg_insurance_cost[num] = avg_cost_insurance_children(num)
-    print(f"The average insurance cost with {num} children is {round(children_avg_insurance_cost[num],2)}")
+    print(f"The average insurance cost with {num} children is ${round(children_avg_insurance_cost[num],2)}")
 
 #Average cost of insurance based on BMI
 bmi_avg_insurance_cost = {}
@@ -138,7 +154,7 @@ for num in list1:
 
 for key, value in bmi_avg_insurance_cost.items():
     if value == max(bmi_avg_insurance_cost.values()):
-        print(f"The maximum average insurance cost is seen in {key} BMI \
+        print(f"\nThe maximum average insurance cost is seen in {key} BMI \
 with a value of ${round(value,2)}")
         
 
