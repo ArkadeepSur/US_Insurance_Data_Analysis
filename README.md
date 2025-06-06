@@ -36,4 +36,27 @@ Make sure the file `insurance.csv` is in the same directory as the script.
   - Insurance cost vs Age
   - Insurance cost vs Gender
 
+## 🧠 Insurance Cost Formula (Used for Simulations)
+
+```python
+insurance_cost = 250*age - 128*sex + 370*bmi + 425*children + 24000*smoker - 12500
+Note: sex is treated as 0 for female and 1 for male; smoker is 1 for smoker, 0 otherwise.
+
+📊 Output Examples
+Average cost if smokers quit
+Region with highest average cost
+BMI and Age segments with highest cost
+Male/Female cost comparisons
+
+
+🚀 How to Run
+Make sure Python 3 is installed.
+python main.py
+Ensure that the insurance.csv file is in the same directory.
+
+Requirements
+Python 3.x
+No external libraries required (only built-in csv module used)
+
+
 ---
